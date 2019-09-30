@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name='TSTFuncionario_3.0'
