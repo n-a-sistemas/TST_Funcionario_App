@@ -20,6 +20,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -146,5 +147,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    public void conectaBanco(){
+        FirebaseApp.initializeApp(MainActivity.this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
     }
 }
