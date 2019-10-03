@@ -13,6 +13,7 @@ public class GalleryViewModel extends ViewModel {
         mText.setValue("This is gallery fragment");
     }
 
+
     public LiveData<String> getText() {
         return mText;
     }

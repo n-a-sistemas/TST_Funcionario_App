@@ -8,6 +8,10 @@ public class Funcionario {
     private String imagem;
     private String nome;
     private String profissao;
+
+    public Funcionario() {
+    }
+
     private boolean valido;
 
     public String getUid() {

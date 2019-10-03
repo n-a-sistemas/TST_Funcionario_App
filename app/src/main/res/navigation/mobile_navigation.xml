@@ -40,4 +40,13 @@
         android:name="com.example.tstfuncionario_30.ui.send.SendFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
+
+    <fragment
+        android:id="@+id/nav_epi"
+        android:name="com.example.tstfuncionario_30.EpiFragment"
+        android:label="@string/menu_epi"
+        tools:layout="@layout/fragment_epi" />
+
+
+
 </navigation>
