@@ -2,25 +2,64 @@ package com.example.tstfuncionario_30.modelos;
 
 public class Funcionario {
 
-    private String uid;
+    private String uuid;
     private String email;
     private String pontos;
-    private String imagem;
+    private String imgScr;
     private String nome;
     private String profissao;
+    private String valido;
+    private String epiValidade;
 
     public Funcionario() {
     }
 
-    private boolean valido;
-
-    public String getUid() {
-        return uid;
+    @Override
+    public String toString() {
+        return "Funcionario{" +
+                "uuid='" + uuid + '\'' +
+                ", email='" + email + '\'' +
+                ", pontos='" + pontos + '\'' +
+                ", imgScr='" + imgScr + '\'' +
+                ", nome='" + nome + '\'' +
+                ", profissao='" + profissao + '\'' +
+                ", valido='" + valido + '\'' +
+                ", epiValidade='" + epiValidade + '\'' +
+                '}';
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public String getUuid() {
+        return uuid;
     }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public String getImgScr() {
+        return imgScr;
+    }
+
+    public void setImgScr(String imgScr) {
+        this.imgScr = imgScr;
+    }
+
+    public String getValido() {
+        return valido;
+    }
+
+    public void setValido(String valido) {
+        this.valido = valido;
+    }
+
+    public String getEpiValidade() {
+        return epiValidade;
+    }
+
+    public void setEpiValidade(String epiValidade) {
+        this.epiValidade = epiValidade;
+    }
+
 
     public String getEmail() {
         return email;
@@ -30,13 +69,6 @@ public class Funcionario {
         this.email = email;
     }
 
-    public boolean isValido() {
-        return valido;
-    }
-
-    public void setValido(boolean valido) {
-        this.valido = valido;
-    }
 
     public String getPontos() {
         return pontos;
@@ -46,13 +78,6 @@ public class Funcionario {
         this.pontos = pontos;
     }
 
-    public String getImagem() {
-        return imagem;
-    }
-
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
-    }
 
     public String getNome() {
         return nome;
@@ -70,16 +95,4 @@ public class Funcionario {
         this.profissao = profissao;
     }
 
-    @Override
-    public String toString() {
-        return "Funcionario{" +
-                "uid='" + uid + '\'' +
-                ", email='" + email + '\'' +
-                ", pontos='" + pontos + '\'' +
-                ", imagem='" + imagem + '\'' +
-                ", nome='" + nome + '\'' +
-                ", profissao='" + profissao + '\'' +
-                ", valido=" + valido +
-                '}';
-    }
 }

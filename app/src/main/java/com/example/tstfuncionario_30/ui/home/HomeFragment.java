@@ -2,6 +2,7 @@ package com.example.tstfuncionario_30.ui.home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +11,14 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.tstfuncionario_30.MainActivity;
 import com.example.tstfuncionario_30.R;
+import com.example.tstfuncionario_30.modelos.Funcionario;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -26,8 +29,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.Period;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class HomeFragment extends Fragment {
@@ -35,10 +42,11 @@ public class HomeFragment extends Fragment {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     String ponto;
-    private TextView textView1;
+    private TextView textView1,textView2,textView3,textView4;
     private String data;
-    private Integer dataacidente;
-    private int datasemacidente;
+    private String dataacidente;
+    private String datachurasco;
+    private List<Funcionario> funcionarios = new ArrayList<Funcionario>();
 
 
     private HomeViewModel homeViewModel;
@@ -49,11 +57,19 @@ public class HomeFragment extends Fragment {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         eventos();
         eventoData();
+        ranking();
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         final TextView textView = root.findViewById(R.id.text_home);
         textView1 = root.findViewById(R.id.text_view_pontuacao);
+        textView2 = root.findViewById(R.id.text_view_churasco);
+        textView3 = root.findViewById(R.id.text_view_dias_sem_acidente);
+        textView4 = root.findViewById(R.id.text_view_rank1);
+
+
+
+
 
         homeViewModel.getText().observe(this, new Observer<String>() {
             @Override
@@ -72,7 +88,7 @@ public class HomeFragment extends Fragment {
 
     public void eventos(){
         databaseReference.child("projetotst").child("funcionario")
-                .child("YM64JVOl7lTWNEQGrmwudJeoN8w1")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -94,15 +110,44 @@ public class HomeFragment extends Fragment {
 
         databaseReference.child("projetotst")
                 .addValueEventListener(new ValueEventListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.O)
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                        dataacidente = Integer.parseInt(dataSnapshot.child("data_de_acidente")
+                        dataacidente = (dataSnapshot.child("data_de_acidente")
+                                .getValue().toString());
+                        datachurasco = (dataSnapshot.child("data_do_churasco")
                                 .getValue().toString());
 
 
+                        Date hoje = Calendar.getInstance().getTime();
+
+                        Date cal = new Date();
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy",
+                                Locale.ENGLISH);
+                        try {
+                           cal =  sdf.parse(dataacidente);
+                           Long a =  ((hoje.getTime() - cal.getTime()) / (1000 * 60 * 60 * 24));
+
+                           textView3.setText(a.toString());
+
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                       }
+
+                        Date churasco = new Date();
+                        SimpleDateFormat mdf = new SimpleDateFormat("dd/MM/yyyy",
+                                Locale.ENGLISH);
+                        try {
+                            churasco = mdf.parse(datachurasco);
+
+                            Long churas = ((churasco.getTime() - hoje.getTime()) / (1000 * 60 * 60 * 24));
+                            textView2.setText(churas.toString());
 
 
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
 
 
                     }
@@ -114,6 +159,40 @@ public class HomeFragment extends Fragment {
                 });
 
     }
+
+
+    public void ranking(){
+        databaseReference.child("projetotst").child("funcionario").orderByChild("nome")
+                .addValueEventListener(new ValueEventListener() {
+            @Override
+
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                funcionarios.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Funcionario funcionario = snapshot.getValue(Funcionario.class);
+                    funcionarios.add(funcionario);
+                }
+
+                for (int i = 2; i<funcionarios.size();i++){
+
+                    Integer pontos =Integer.parseInt(funcionarios.get(i).getPontos());
+                    textView4.setText(pontos.toString());
+
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+
+
 
 
 

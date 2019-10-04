@@ -141,16 +141,16 @@ public class MainActivity extends AppCompatActivity {
 
                 if (response.isNewUser()){
 
-                    this.funcionario.setUid(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    this.funcionario.setUuid(FirebaseAuth.getInstance().getCurrentUser().getUid());
                     this.funcionario.setEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
                     this.funcionario.setNome(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-                    this.funcionario.setValido(false);
+                    this.funcionario.setValido("false");
                     this.funcionario.setPontos("");
-                    this.funcionario.setImagem("");
+                    this.funcionario.setImgScr("");
                     databaseReference
                             .child("projetotst")
                             .child("funcionario")
-                            .child(funcionario.getUid())
+                            .child(funcionario.getUuid())
                             .setValue(funcionario);
                 }
 
