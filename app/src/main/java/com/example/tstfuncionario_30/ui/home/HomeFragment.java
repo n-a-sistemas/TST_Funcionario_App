@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.tstfuncionario_30.MainActivity;
+
 import com.example.tstfuncionario_30.R;
 import com.example.tstfuncionario_30.modelos.Funcionario;
 import com.google.firebase.FirebaseApp;
@@ -33,6 +33,8 @@ import java.time.Duration;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -173,13 +175,9 @@ public class HomeFragment extends Fragment {
                     funcionarios.add(funcionario);
                 }
 
-                for (int i = 2; i<funcionarios.size();i++){
-
-                    Integer pontos =Integer.parseInt(funcionarios.get(i).getPontos());
-                    textView4.setText(pontos.toString());
 
 
-                }
+
 
             }
 

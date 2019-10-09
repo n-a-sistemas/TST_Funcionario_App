@@ -8,7 +8,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.tstfuncionario_30.MainActivity;
 import com.example.tstfuncionario_30.adapter.Adapter;
 import com.example.tstfuncionario_30.modelos.Epi;
 import com.google.firebase.database.DataSnapshot;
@@ -30,7 +29,6 @@ public class GalleryViewModel extends ViewModel {
 
     public GalleryViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
 
 
 
