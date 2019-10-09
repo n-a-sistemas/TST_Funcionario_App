@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.example.tstfuncionario_30.adapter.Adapter;
+import com.example.tstfuncionario_30.modelos.Epi;
 import com.example.tstfuncionario_30.modelos.Funcionario;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
@@ -36,9 +38,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -48,11 +53,14 @@ public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
     private Funcionario funcionario = new Funcionario();
-
+    private Epi epi = new Epi();
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private TextView textView, textViewNome;
     private ImageView imageView;
+    private List<Epi> epis = new ArrayList<Epi>();
+    private ArrayAdapter<Epi> arrayAdapterEpi;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if (response.isNewUser()){
-
                     this.funcionario.setUuid(FirebaseAuth.getInstance().getCurrentUser().getUid());
                     this.funcionario.setEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
                     this.funcionario.setNome(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
@@ -158,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("LOGIN", "true");
                 editor.apply();
+                evento(FirebaseAuth.getInstance().getCurrentUser().getUid());
                 evento(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
 
@@ -203,6 +211,8 @@ public class MainActivity extends AppCompatActivity {
                         textViewNome = findViewById(R.id.text_view_nome);
                         textViewNome.setText(nome);
 
+
+
                     }
 
                     @Override
@@ -210,6 +220,32 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    private void eventoEpi(String uuid){
+        databaseReference.child("projetotst").child("funcionario").child(uuid)
+                .child("epi").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                epis.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    epi = snapshot.getValue(Epi.class);
+                    epis.add(epi);
+
+                }
+                arrayAdapterEpi = new Adapter(MainActivity.this,
+                        (ArrayList<Epi>) epis);
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
 
