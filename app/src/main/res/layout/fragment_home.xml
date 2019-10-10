@@ -32,8 +32,8 @@
         android:id="@+id/text_view_dias_sem_acidente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -42,13 +42,10 @@
         android:id="@+id/text_view_churasco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="73dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
-        app:layout_constraintStart_toEndOf="@+id/text_view_dias_sem_acidente"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
@@ -66,24 +63,21 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="43dp"
+        android:layout_marginEnd="32dp"
         android:text="Dias para o churas"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/text_view_pontuacao" />
 
     <TextView
         android:id="@+id/text_view_primeiro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_churasco" />
+        tools:layout_editor_absoluteY="354dp" />
 
     <TextView
         android:id="@+id/text_view_segundo"
@@ -102,5 +96,39 @@
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/text_view_primeiro"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_churasco" />
+
+    <TextView
+        android:id="@+id/text_view_nome_segundo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="200dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_segundo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_dias_sem_acidente" />
+
+    <TextView
+        android:id="@+id/text_view_nome_primeiro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="185dp"
+        android:layout_marginEnd="90dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_primeiro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/text_view_nome_terceiro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="22dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_terceiro"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_churasco" />
 </androidx.constraintlayout.widget.ConstraintLayout>

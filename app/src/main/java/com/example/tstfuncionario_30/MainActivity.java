@@ -73,10 +73,10 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("LOGIN", Context.MODE_PRIVATE);
         String resultado = sharedPreferences.getString("LOGIN", "");
 
-        //if (!Boolean.parseBoolean(resultado)){
+        if (!Boolean.parseBoolean(resultado)){
             criarLogin();
 
-        //}
+        }
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);

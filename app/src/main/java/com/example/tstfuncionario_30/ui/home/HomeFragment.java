@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     String ponto;
-    private TextView textView1,textView2,textView3,textView4,textView5,textView6;
+    private TextView textView1,textView2,textView3,textView4,textView5,textView6,textView7,textView8,textView9;
     private String data;
     private String dataacidente;
     private String datachurasco;
@@ -64,6 +64,9 @@ public class HomeFragment extends Fragment {
         textView4 = root.findViewById(R.id.text_view_primeiro);
         textView5 = root.findViewById(R.id.text_view_segundo);
         textView6 = root.findViewById(R.id.text_view_terceiro);
+        textView7 = root.findViewById(R.id.text_view_nome_primeiro);
+        textView8 = root.findViewById(R.id.text_view_nome_segundo);
+        textView9 = root.findViewById(R.id.text_view_nome_terceiro);
 
 
 
@@ -175,12 +178,15 @@ public class HomeFragment extends Fragment {
                 Collections.sort(funcionarios);
 
                 funcionarios.get(0);
+                textView7.setText(funcionarios.get(0).getNome());
                 textView4.setText(funcionarios.get(0).getPontos());
 
                 funcionarios.get(1);
+                textView8.setText(funcionarios.get(1).getNome());
                 textView5.setText(funcionarios.get(1).getPontos());
 
                 funcionarios.get(2);
+                textView9.setText(funcionarios.get(2).getNome());
                 textView6.setText(funcionarios.get(2).getPontos());
 
             }
