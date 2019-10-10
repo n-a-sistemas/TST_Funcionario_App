@@ -22,7 +22,7 @@
             android:title="@string/menu_tools" />
         <item
             android:id="@+id/nav_epi"
-            android:icon="@drawable/helmet"
+            android:icon="@drawable/ic_menu_send"
             android:title="@string/menu_epi" />
 
 
@@ -40,7 +40,7 @@
                 android:icon="@drawable/ic_menu_share"
                 android:title="@string/menu_share" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_sair"
                 android:icon="@drawable/ic_menu_send"
                 android:title="@string/menu_send" />
         </menu>

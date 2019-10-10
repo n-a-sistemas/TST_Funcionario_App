@@ -2,7 +2,7 @@ package com.example.tstfuncionario_30.modelos;
 
 import java.util.List;
 
-public class Funcionario {
+public class Funcionario implements Comparable<Funcionario> {
 
     private String uuid;
     private String nome;
@@ -122,4 +122,14 @@ public class Funcionario {
                 '}';
     }
 
+    @Override
+    public int compareTo(Funcionario outroFuncionario) {
+        if (Integer.parseInt(this.pontos) > Integer.parseInt(outroFuncionario.getPontos())){
+            return -1;
+        }
+        if (Integer.parseInt(this.pontos) < Integer.parseInt(outroFuncionario.getPontos())){
+            return 1;
+        }
+        return 0;
+    }
 }

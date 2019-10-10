@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.tstfuncionario_30.MainActivity;
+
 import com.example.tstfuncionario_30.R;
 import com.example.tstfuncionario_30.adapter.Adapter;
 import com.example.tstfuncionario_30.modelos.Epi;
@@ -58,8 +58,7 @@ public class GalleryFragment extends Fragment {
 
 
 
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
+        galleryViewModel = ViewModelProviders.of(this).get(GalleryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         final TextView textView = root.findViewById(R.id.text_gallery);
         lista = root.findViewById(R.id.list_view_epi);

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,8 +39,15 @@ public class Adapter extends ArrayAdapter<Epi> {
         }
 
         Epi epipego = epi.get(position);
-        
 
+        TextView nome = epiitem.findViewById(R.id.text_view_epi_nome);
+        nome.setText(epipego.getNome());
+        TextView validade = epiitem.findViewById(R.id.text_view_validade);
+        validade.setText(epipego.getValidade());
+        TextView validadeCA = epiitem.findViewById(R.id.text_validade_ca);
+        validadeCA.setText(epipego.getValidadeCA());
+
+        
         return epiitem;
     }
 }

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.example.tstfuncionario_30.adapter.Adapter;
 import com.example.tstfuncionario_30.modelos.Epi;
 import com.example.tstfuncionario_30.modelos.Funcionario;
 import com.firebase.ui.auth.AuthUI;
@@ -13,6 +12,7 @@ import com.firebase.ui.auth.IdpResponse;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send,R.id.nav_epi)
+                R.id.nav_tools, R.id.nav_share, R.id.nav_sair,R.id.nav_epi)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -179,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     public void conectaBanco(){
         FirebaseApp.initializeApp(MainActivity.this);
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -221,34 +222,5 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-
-    private void eventoEpi(String uuid){
-        databaseReference.child("projetotst").child("funcionario").child(uuid)
-                .child("epi").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                epis.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    epi = snapshot.getValue(Epi.class);
-                    epis.add(epi);
-
-                }
-                arrayAdapterEpi = new Adapter(MainActivity.this,
-                        (ArrayList<Epi>) epis);
-
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-    }
-
-
-
 
 }

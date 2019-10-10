@@ -76,12 +76,31 @@
         app:layout_constraintTop_toBottomOf="@+id/text_view_pontuacao" />
 
     <TextView
-        android:id="@+id/text_view_rank1"
+        android:id="@+id/text_view_primeiro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="150dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_dias_sem_acidente" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_churasco" />
+
+    <TextView
+        android:id="@+id/text_view_segundo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/text_view_terceiro"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_primeiro"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/text_view_terceiro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="227dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_primeiro"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_churasco" />
 </androidx.constraintlayout.widget.ConstraintLayout>
