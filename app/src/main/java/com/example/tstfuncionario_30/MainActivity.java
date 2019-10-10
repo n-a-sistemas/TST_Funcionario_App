@@ -179,15 +179,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void sair(View v){
-
-            sharedPreferences = getSharedPreferences("LOGIN", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("LOGIN", "false");
-            editor.apply();
-            criarLogin();
-
-        }
 
     public void conectaBanco(){
         FirebaseApp.initializeApp(MainActivity.this);

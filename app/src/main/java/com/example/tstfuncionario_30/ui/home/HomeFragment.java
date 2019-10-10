@@ -1,7 +1,5 @@
 package com.example.tstfuncionario_30.ui.home;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,7 +17,6 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.tstfuncionario_30.R;
 import com.example.tstfuncionario_30.modelos.Funcionario;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,12 +26,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -44,7 +38,7 @@ public class HomeFragment extends Fragment {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     String ponto;
-    private TextView textView1,textView2,textView3,textView4;
+    private TextView textView1,textView2,textView3,textView4,textView5,textView6;
     private String data;
     private String dataacidente;
     private String datachurasco;
@@ -67,7 +61,9 @@ public class HomeFragment extends Fragment {
         textView1 = root.findViewById(R.id.text_view_pontuacao);
         textView2 = root.findViewById(R.id.text_view_churasco);
         textView3 = root.findViewById(R.id.text_view_dias_sem_acidente);
-        textView4 = root.findViewById(R.id.text_view_rank1);
+        textView4 = root.findViewById(R.id.text_view_primeiro);
+        textView5 = root.findViewById(R.id.text_view_segundo);
+        textView6 = root.findViewById(R.id.text_view_terceiro);
 
 
 
@@ -176,8 +172,16 @@ public class HomeFragment extends Fragment {
                 }
 
 
+                Collections.sort(funcionarios);
 
+                funcionarios.get(0);
+                textView4.setText(funcionarios.get(0).getPontos());
 
+                funcionarios.get(1);
+                textView5.setText(funcionarios.get(1).getPontos());
+
+                funcionarios.get(2);
+                textView6.setText(funcionarios.get(2).getPontos());
 
             }
 

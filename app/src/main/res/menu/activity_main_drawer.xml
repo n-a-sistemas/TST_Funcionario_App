@@ -43,10 +43,6 @@
                 android:id="@+id/nav_sair"
                 android:icon="@drawable/ic_menu_send"
                 android:title="@string/menu_send" />
-            <item
-                android:id="@+id/menu_sair"
-                android:onClick="sair"
-                android:title="Sair" />
         </menu>
     </item>
 
