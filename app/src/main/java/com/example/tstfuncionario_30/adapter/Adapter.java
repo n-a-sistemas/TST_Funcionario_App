@@ -38,7 +38,6 @@ public class Adapter extends ArrayAdapter<Epi> {
         }
 
         Epi epipego = epi.get(position);
-
         
 
         return epiitem;
