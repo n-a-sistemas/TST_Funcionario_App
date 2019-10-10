@@ -51,13 +51,11 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
-    private SharedPreferences sharedPreferences;
-    private Funcionario funcionario = new Funcionario();
+
+
     private Epi epi = new Epi();
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
-    private TextView textView, textViewNome;
-    private ImageView imageView;
+
+
     private List<Epi> epis = new ArrayList<Epi>();
     private ArrayAdapter<Epi> arrayAdapterEpi;
     private ListView listView;
@@ -67,20 +65,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        conectaBanco();
 
 
-        sharedPreferences = getSharedPreferences("LOGIN", Context.MODE_PRIVATE);
-        String resultado = sharedPreferences.getString("LOGIN", "");
 
-        if (!Boolean.parseBoolean(resultado)) {
-            criarLogin();
-
-        }
-
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,110 +108,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
-    }
-
-    private void criarLogin(){
-        List<AuthUI.IdpConfig> providers = Arrays.asList(
-                new AuthUI.IdpConfig.EmailBuilder().build(),
-                new AuthUI.IdpConfig.PhoneBuilder().build(),
-                new AuthUI.IdpConfig.GoogleBuilder().build()
-        );
-
-        startActivityForResult(
-                AuthUI.getInstance()
-                .createSignInIntentBuilder()
-                .setAvailableProviders(providers)
-                .build(),
-                123
-        );
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 123){
-
-            IdpResponse response = IdpResponse.fromResultIntent(data);
-
-            if (resultCode == RESULT_OK){
-
-
-
-                if (response.isNewUser()){
-                    this.funcionario.setUuid(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                    this.funcionario.setEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-                    this.funcionario.setNome(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-                    this.funcionario.setValido("false");
-                    this.funcionario.setPontos("");
-                    this.funcionario.setImgScr("");
-                    databaseReference
-                            .child("projetotst")
-                            .child("funcionario")
-                            .child(funcionario.getUuid())
-                            .setValue(funcionario);
-                }
-
-                sharedPreferences = getSharedPreferences("LOGIN", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("LOGIN", "true");
-                editor.apply();
-                evento(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                evento(FirebaseAuth.getInstance().getCurrentUser().getUid());
-
-
-            }
-            else {
-
-                if (response == null){
-                    finish();
-                }
-            }
-        }
-    }
-
-
-    public void conectaBanco(){
-        FirebaseApp.initializeApp(MainActivity.this);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference();
-    }
-
-
-    public void evento(String uid) {
-        databaseReference.child("projetotst").child("funcionario")
-                .child(uid)
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                       String Email = (dataSnapshot.child("email").getValue().toString());
-                        textView = findViewById(R.id.text_view_email);
-                        textView.setText(Email);
-
-                        imageView= findViewById(R.id.img_foto);
-
-                        String img = (dataSnapshot.child("imgScr")
-                                .getValue().toString());
-
-                        Picasso.get().load(img)
-                              .resize(120, 100)
-                                .centerCrop().into(imageView);
-
-                        String nome = (dataSnapshot.child("nome").getValue().toString());
-
-                        textViewNome = findViewById(R.id.text_view_nome);
-                        textViewNome.setText(nome);
-
-
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
     }
 
 }
