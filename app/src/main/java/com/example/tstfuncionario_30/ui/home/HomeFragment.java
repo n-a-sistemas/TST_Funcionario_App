@@ -51,40 +51,44 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        eventos();
-        eventoData();
-        ranking();
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        textView1 = root.findViewById(R.id.text_view_pontuacao);
-        textView2 = root.findViewById(R.id.text_view_churasco);
-        textView3 = root.findViewById(R.id.text_view_dias_sem_acidente);
-        textView4 = root.findViewById(R.id.text_view_primeiro);
-        textView5 = root.findViewById(R.id.text_view_segundo);
-        textView6 = root.findViewById(R.id.text_view_terceiro);
-        textView7 = root.findViewById(R.id.text_view_nome_primeiro);
-        textView8 = root.findViewById(R.id.text_view_nome_segundo);
-        textView9 = root.findViewById(R.id.text_view_nome_terceiro);
 
 
 
+            eventos();
+            eventoData();
+            ranking();
+
+            homeViewModel =
+                    ViewModelProviders.of(this).get(HomeViewModel.class);
+            View root = inflater.inflate(R.layout.fragment_home, container, false);
+            final TextView textView = root.findViewById(R.id.text_home);
+            textView1 = root.findViewById(R.id.text_view_pontuacao);
+            textView2 = root.findViewById(R.id.text_view_churasco);
+            textView3 = root.findViewById(R.id.text_view_dias_sem_acidente);
+            textView4 = root.findViewById(R.id.text_view_primeiro);
+            textView5 = root.findViewById(R.id.text_view_segundo);
+            textView6 = root.findViewById(R.id.text_view_terceiro);
+            textView7 = root.findViewById(R.id.text_view_nome_primeiro);
+            textView8 = root.findViewById(R.id.text_view_nome_segundo);
+            textView9 = root.findViewById(R.id.text_view_nome_terceiro);
 
 
-        homeViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
+            homeViewModel.getText().observe(this, new Observer<String>() {
+                @Override
+                public void onChanged(@Nullable String s) {
 
-                textView.setText(s);
-
-
-            }
-        });
+                    textView.setText(s);
 
 
-        return root;
+                }
+            });
+
+
+            return root;
+
     }
+
+
 
 
     public void eventos(){
