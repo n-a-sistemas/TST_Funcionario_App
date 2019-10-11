@@ -28,13 +28,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SplashScreen extends AppCompatActivity {
+    public static final String ID = "com.example.projetoapptst.ID";
 
     private SharedPreferences sharedPreferences;
     private Funcionario funcionario = new Funcionario();
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
-    private TextView textView, textViewNome;
-    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +53,9 @@ public class SplashScreen extends AppCompatActivity {
                     conectaBanco();
 
                 }
-                else {main();}
+                else {
+                    conectaBanco();
+                    main();}
             }
         },2000);
     }
@@ -62,6 +63,7 @@ public class SplashScreen extends AppCompatActivity {
     public void main(){
         Intent intent = new Intent(SplashScreen.this, MainActivity.class);
         startActivity(intent);
+
         finish();
 
     }
@@ -101,6 +103,9 @@ public class SplashScreen extends AppCompatActivity {
                     this.funcionario.setValido("false");
                     this.funcionario.setPontos("");
                     this.funcionario.setImgScr("");
+                    this.funcionario.setEndereco("");
+                    this.funcionario.setCidade("");
+                    this.funcionario.setTelefone("");
                     databaseReference
                             .child("projetotst")
                             .child("funcionario")
@@ -111,9 +116,8 @@ public class SplashScreen extends AppCompatActivity {
                 sharedPreferences = getSharedPreferences("LOGIN", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("LOGIN", "true");
+                editor.putString("id",FirebaseAuth.getInstance().getCurrentUser().getUid());
                 editor.apply();
-                evento(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                evento(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
 
             }
@@ -131,41 +135,5 @@ public class SplashScreen extends AppCompatActivity {
         FirebaseApp.initializeApp(SplashScreen.this);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
-    }
-
-    public void evento(String uid) {
-        databaseReference.child("projetotst").child("funcionario")
-                .child(uid)
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                        String Email = (dataSnapshot.child("email").getValue().toString());
-                        textView = findViewById(R.id.text_view_email);
-                        textView.setText(Email);
-
-                        imageView= findViewById(R.id.img_foto);
-
-                        String img = (dataSnapshot.child("imgScr")
-                                .getValue().toString());
-
-                        Picasso.get().load(img)
-                                .resize(120, 100)
-                                .centerCrop().into(imageView);
-
-                        String nome = (dataSnapshot.child("nome").getValue().toString());
-
-                        textViewNome = findViewById(R.id.text_view_nome);
-                        textViewNome.setText(nome);
-
-
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
     }
 }
