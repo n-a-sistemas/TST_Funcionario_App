@@ -1,7 +1,6 @@
 package com.example.tstfuncionario_30;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,7 +10,6 @@ import androidx.lifecycle.ViewModelProviders;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.tstfuncionario_30.ui.home.HomeViewModel;
@@ -54,8 +52,8 @@ public class EpiFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_epi,
                 container, false);
-        textViewNome = root.findViewById(R.id.text_view_nome_funcionario);
-        textViewEmail = root.findViewById(R.id.text_view_email_funcionario);
+        textViewNome = root.findViewById(R.id.text_view_nome);
+        textViewEmail = root.findViewById(R.id.text_view_email);
         textViewProfissao= root.findViewById(R.id.text_view_profissao_funcionario);
 
         evento();
