@@ -61,7 +61,6 @@ public class HomeFragment extends Fragment {
             homeViewModel =
                     ViewModelProviders.of(this).get(HomeViewModel.class);
             View root = inflater.inflate(R.layout.fragment_home, container, false);
-            final TextView textView = root.findViewById(R.id.text_home);
             textView1 = root.findViewById(R.id.text_view_pontuacao);
             textView2 = root.findViewById(R.id.text_view_churasco);
             textView3 = root.findViewById(R.id.text_view_dias_sem_acidente);
@@ -76,8 +75,6 @@ public class HomeFragment extends Fragment {
             homeViewModel.getText().observe(this, new Observer<String>() {
                 @Override
                 public void onChanged(@Nullable String s) {
-
-                    textView.setText(s);
 
 
                 }
