@@ -8,17 +8,14 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.provider.DocumentsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.tstfuncionario_30.ui.home.HomeViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -59,14 +56,12 @@ public class EpiFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_epi,
                 container, false);
-        textViewNome = root.findViewById(R.id.text_view_nome);
-        textViewEmail = root.findViewById(R.id.text_view_email);
+        textViewNome = root.findViewById(R.id.text_view_nome_main);
+        textViewEmail = root.findViewById(R.id.text_view_email_main);
         textViewProfissao= root.findViewById(R.id.text_view_profissao_funcionario);
-        botao= root.findViewById(R.id.btn_editar);
-
 
         evento();
-        FloatingActionButton fab = root.findViewById(R.id.fab_editar);
+        FloatingActionButton fab = root.findViewById(R.id.fab_sair);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,7 +93,6 @@ public class EpiFragment extends Fragment {
                         textViewEmail.setText(email);
                         profissao= (dataSnapshot.child("profissao").getValue().toString());
                         textViewProfissao.setText(profissao);
-
                     }
 
                     @Override
@@ -107,10 +101,5 @@ public class EpiFragment extends Fragment {
                     }
                 });
     }
-
-
-
-
-
 
 }

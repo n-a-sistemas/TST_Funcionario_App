@@ -12,6 +12,9 @@ public class Funcionario implements Comparable<Funcionario> {
     private String email;
     private String valido;
     private String epiValidade;
+    private String telefone;
+    private String endereco;
+    private String cidade;
     private List<Epi> epis;
 
     public void adicionaEpi(Epi epi){
@@ -62,6 +65,29 @@ public class Funcionario implements Comparable<Funcionario> {
         this.email = email;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
 
     public Funcionario() {
     }
@@ -118,6 +144,9 @@ public class Funcionario implements Comparable<Funcionario> {
                 ", email='" + email + '\'' +
                 ", valido='" + valido + '\'' +
                 ", epiValidade='" + epiValidade + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", cidade='" + cidade + '\'' +
                 ", epis=" + epis +
                 '}';
     }
