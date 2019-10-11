@@ -1,6 +1,7 @@
 package com.example.tstfuncionario_30;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,7 +11,9 @@ import androidx.lifecycle.ViewModelProviders;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tstfuncionario_30.ui.home.HomeViewModel;
 import com.google.firebase.FirebaseApp;
@@ -32,7 +35,8 @@ public class EpiFragment extends Fragment {
     private DatabaseReference databaseReference;
     private TextView textViewNome, textViewEmail,textViewProfissao;
     private HomeViewModel homeViewModel;
-    String nome,email,profissao;
+    private String nome,email,profissao;
+    private Button botao;
 
 
 
@@ -55,8 +59,17 @@ public class EpiFragment extends Fragment {
         textViewNome = root.findViewById(R.id.text_view_nome);
         textViewEmail = root.findViewById(R.id.text_view_email);
         textViewProfissao= root.findViewById(R.id.text_view_profissao_funcionario);
+        botao= root.findViewById(R.id.btn_editar);
+
 
         evento();
+        botao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "edita", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return root;
 
 
@@ -89,6 +102,7 @@ public class EpiFragment extends Fragment {
                     }
                 });
     }
+
 
 
 
