@@ -73,37 +73,37 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("LOGIN", Context.MODE_PRIVATE);
         String resultado = sharedPreferences.getString("LOGIN", "");
 
-        //if (!Boolean.parseBoolean(resultado)){
+        if (!Boolean.parseBoolean(resultado)) {
             criarLogin();
-
-        //}
-
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_sair,R.id.nav_epi)
-                .setDrawerLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        }
 
 
-    }
+            Toolbar toolbar = findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            FloatingActionButton fab = findViewById(R.id.fab);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+            });
+            DrawerLayout drawer = findViewById(R.id.drawer_layout);
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            // Passing each menu ID as a set of Ids because each
+            // menu should be considered as top level destinations.
+            mAppBarConfiguration = new AppBarConfiguration.Builder(
+                    R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_sair)
+                    .setDrawerLayout(drawer)
+                    .build();
+            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+            NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+            NavigationUI.setupWithNavController(navigationView, navController);
+
+
+
+        }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -111,6 +111,22 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+            sharedPreferences = getSharedPreferences("LOGIN", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("LOGIN", "false");
+            editor.apply();
+            criarLogin();
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -195,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                        String Email = (dataSnapshot.child("email").getValue().toString());
-                        textView = findViewById(R.id.text_view_email);
+                        textView = findViewById(R.id.text_view_email_funcionario);
                         textView.setText(Email);
 
                         imageView= findViewById(R.id.img_foto);
@@ -209,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
 
                         String nome = (dataSnapshot.child("nome").getValue().toString());
 
-                        textViewNome = findViewById(R.id.text_view_nome);
+                        textViewNome = findViewById(R.id.text_view_nome_funcionario);
                         textViewNome.setText(nome);
 
 
@@ -221,6 +237,14 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    public void  sair(View view){
+        sharedPreferences = getSharedPreferences("LOGIN", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("LOGIN", "false");
+        editor.apply();
+        criarLogin();
     }
 
 }

@@ -24,29 +24,10 @@
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.example.tstfuncionario_30.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
-
-    <fragment
-        android:id="@+id/nav_share"
-        android:name="com.example.tstfuncionario_30.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
-
-    <fragment
         android:id="@+id/nav_sair"
-        android:name="com.example.tstfuncionario_30.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
-
-    <fragment
-        android:id="@+id/nav_epi"
         android:name="com.example.tstfuncionario_30.EpiFragment"
         android:label="@string/menu_epi"
         tools:layout="@layout/fragment_epi" />
-
 
 
 </navigation>

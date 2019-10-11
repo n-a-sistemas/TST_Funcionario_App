@@ -47,7 +47,7 @@ public class Adapter extends ArrayAdapter<Epi> {
         TextView validadeCA = epiitem.findViewById(R.id.text_validade_ca);
         validadeCA.setText(epipego.getValidadeCA());
 
-        
+
         return epiitem;
     }
 }
