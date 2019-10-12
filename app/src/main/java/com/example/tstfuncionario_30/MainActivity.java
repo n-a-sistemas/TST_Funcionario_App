@@ -28,6 +28,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -81,17 +82,40 @@ public class MainActivity extends AppCompatActivity {
             NavigationUI.setupWithNavController(navigationView, navController);
         sharedPreferences = getSharedPreferences("LOGIN", Context.MODE_PRIVATE);
         String id = sharedPreferences.getString("id","");
-        textViewEmail = findViewById(R.id.text_view_email_main);
-        textViewNome = findViewById(R.id.text_view_nome_main);
-        imageView= findViewById(R.id.img_foto);
-        evento(id);
+        View hView =  navigationView.getHeaderView(0);
+        final TextView nav_nome= (TextView)hView.findViewById(R.id.text_view_nome_main);
+        final TextView nav_email = (TextView)hView.findViewById(R.id.text_view_email_main);
+        final ImageView nav_img = (ImageView)hView.findViewById(R.id.img_foto);
+
+        databaseReference.child("projetotst").child("funcionario")
+                .child(id)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        String Email = (dataSnapshot.child("email").getValue().toString());
+                        nav_email.setText(Email);
+
+                        String img = (dataSnapshot.child("imgScr")
+                               .getValue().toString());
+
+                        Picasso.get().load(img)
+                               .resize(120, 100)
+                               .centerCrop().into(nav_img);
+
+                        String nome = (dataSnapshot.child("nome").getValue().toString());
+                        nav_nome.setText(nome);
 
 
 
+                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        }
-
+                    }
+                });
+    }
 
 
 
@@ -148,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
                                 .centerCrop().into(imageView);
 
                         String nome = (dataSnapshot.child("nome").getValue().toString());
-                        textViewNome.setText(nome);
+
 
 
 
