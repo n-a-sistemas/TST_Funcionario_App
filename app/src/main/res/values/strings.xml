@@ -8,16 +8,35 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Ranking</string>
-    <string name="menu_gallery">Seu Epi</string>
+    <string name="menu_gallery">Seu EPI</string>
     <string name="menu_slideshow">Regras de Pontuação</string>
-    <string name="menu_tools">Historico</string>
-    <string name="menu_share">Tempo e Prêmios</string>
-    <string name="menu_send">Sair</string>
-    <string name="menu_epi">MeuEpi</string>
+    <string name="menu_tools">Histórico</string>
+    <string name="menu_share">Tempo e prêmios</string>
+    <string name="menu_send">Seus dados</string>
+    <string name="menu_epi">Seus dados</string>
     <string name="menu_sair">Sair</string>
+
     <string name="nome">Nome</string>
-    <string name="ponto">Pontos</string>
+    <string name="tv_ponto">Pontos</string>
     <string name="ranking">RANKING</string>
+    <string name="tv_email">Email</string>
+    <string name="tv_cidade">Cidade</string>
+    <string name="tv_cargo">Cargo</string>
+    <string name="tv_endereco">Endereço</string>
+    <string name="tv_data">00/00/0000</string>
+    <string name="tv_pontos">00</string>
+    <string name="tv_nomeepi">Nome do EPI</string>
+    <string name="tv_validade">Validade</string>
+    <string name="tv_validadeCA">Validade CA</string>
+    <string name="tv_acidente">dias sem acidente</string>
+    <string name="tv_churras">dias para o churrasco</string>
+    <string name="faltam">faltam</string>
+    <string name="telefone">Telefone</string>
+    <string name="insira_cargo">Insira seu cargo</string>
+    <string name="insira_endereco">Insira seu endereço</string>
+    <string name="insira_telefone">Insira seu telefone</string>
+    <string name="insira_cidade">Insira sua cidade</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

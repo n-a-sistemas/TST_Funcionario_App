@@ -9,9 +9,9 @@
         android:id="@+id/view3"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginBottom="56dp"
         android:background="@drawable/box"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
@@ -24,8 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="300"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:text="@string/tv_pontos"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="@+id/view3"
         app:layout_constraintStart_toStartOf="@+id/view3"
@@ -36,8 +36,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="285"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:text="@string/tv_pontos"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/view3" />
@@ -47,8 +47,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="15"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:text="@string/tv_pontos"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="@+id/view3" />
@@ -58,9 +58,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="32dp"
-        android:text="Dias Sem acidente"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_marginBottom="24dp"
+        android:text="@string/tv_acidente"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="@+id/view3"
         app:layout_constraintStart_toStartOf="@+id/view3" />
@@ -70,11 +70,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="32dp"
-        android:text="Dias para o churas"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_marginBottom="24dp"
+        android:text="@string/tv_churras"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="@+id/view3" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="faltam"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_churasco"
         app:layout_constraintEnd_toEndOf="@+id/view3" />
 
     <TextView
@@ -82,7 +92,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:text="@string/ponto"
+        android:text="@string/tv_ponto"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="@+id/view3"
@@ -93,21 +103,21 @@
         android:id="@+id/view"
         android:layout_width="350dp"
         android:layout_height="280dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/box"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/text_view_nome_primeiro" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="300dp"
         android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:srcCompat="@drawable/rank"
-        tools:layout_editor_absoluteY="378dp" />
+        app:srcCompat="@drawable/rank" />
 
     <TextView
         android:id="@+id/text_view_primeiro"
@@ -115,7 +125,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="164dp"
         android:layout_marginBottom="196dp"
-        android:text="@string/ponto"
+        android:text="@string/tv_pontos"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
@@ -127,7 +137,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginBottom="152dp"
-        android:text="@string/ponto"
+        android:text="@string/tv_pontos"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
@@ -137,9 +147,9 @@
         android:id="@+id/text_view_terceiro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
+        android:layout_marginEnd="64dp"
         android:layout_marginBottom="136dp"
-        android:text="@string/ponto"
+        android:text="@string/tv_pontos"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
@@ -150,10 +160,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
+        android:layout_marginTop="24dp"
         android:text="@string/nome"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/text_view_primeiro"
-        app:layout_constraintStart_toEndOf="@+id/text_view_nome_segundo" />
+        app:layout_constraintStart_toEndOf="@+id/text_view_nome_segundo"
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <TextView
         android:id="@+id/text_view_nome_segundo"
@@ -169,7 +181,7 @@
         android:id="@+id/text_view_nome_terceiro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
+        android:layout_marginEnd="64dp"
         android:text="@string/nome"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/text_view_terceiro"

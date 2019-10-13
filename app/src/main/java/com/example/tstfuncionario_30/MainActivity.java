@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                                .getValue().toString());
 
                         Picasso.get().load(img)
-                               .resize(120, 100)
+                               .resize(80, 80)
                                .centerCrop().into(nav_img);
 
                         String nome = (dataSnapshot.child("nome").getValue().toString());
