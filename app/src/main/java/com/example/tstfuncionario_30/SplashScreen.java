@@ -105,6 +105,7 @@ public class SplashScreen extends AppCompatActivity {
                     this.funcionario.setEndereco("");
                     this.funcionario.setCidade("");
                     this.funcionario.setTelefone("");
+                    this.funcionario.setProfissao("");
                     databaseReference
                             .child("projetotst")
                             .child("funcionario")
