@@ -35,9 +35,10 @@ public class EpiFragment extends Fragment {
 
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
-    private TextView textViewNome, textViewEmail,textViewProfissao;
+    private TextView textViewNome, textViewEmail,textViewProfissao,textViewCidade,textViewEndereco,
+    textViewTelefone;
     private HomeViewModel homeViewModel;
-    private String nome,email,profissao;
+    private String nome,email,profissao,cidade,telefone,endereco;
     private Button botao;
     private ImageView imageView;
 
@@ -63,6 +64,9 @@ public class EpiFragment extends Fragment {
         textViewEmail = root.findViewById(R.id.text_view_email_main);
         textViewProfissao= root.findViewById(R.id.text_view_profissao_funcionario);
         imageView = root.findViewById(R.id.img_funcionario);
+        textViewCidade = root.findViewById(R.id.text_view_cidade);
+        textViewEndereco= root.findViewById(R.id.text_view_endereco);
+        textViewTelefone= root.findViewById(R.id.text_view_telefone);
 
         evento();
         FloatingActionButton fab = root.findViewById(R.id.fab_sair);
@@ -97,10 +101,22 @@ public class EpiFragment extends Fragment {
                         textViewEmail.setText(email);
                         profissao= (dataSnapshot.child("profissao").getValue().toString());
                         textViewProfissao.setText(profissao);
-                        
                         Picasso.get().load(dataSnapshot.child("imgScr")
                                 .getValue().toString())
-                                .resize(120, 120).centerCrop().into(imageView);
+                                .resize(120, 120).centerCrop()
+                                .into(imageView);
+                        telefone = (dataSnapshot.child("telefone").getValue().toString());
+                        textViewTelefone.setText(telefone);
+
+                        cidade= (dataSnapshot.child("cidade").getValue().toString());
+                        textViewCidade.setText(cidade);
+
+                        endereco= (dataSnapshot.child("endereco").getValue().toString());
+                        textViewEndereco.setText(endereco);
+
+
+
+
                     }
 
                     @Override

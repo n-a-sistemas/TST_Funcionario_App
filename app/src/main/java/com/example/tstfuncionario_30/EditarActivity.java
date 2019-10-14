@@ -35,6 +35,7 @@ public class EditarActivity extends AppCompatActivity {
         editTextEndereco = findViewById(R.id.edit_text_endereco);
         editTextCidade = findViewById(R.id.edit_text_cidade);
         editTextTelefone = findViewById(R.id.edit_text_telefone);
+        funcionarioPuxar();
 
 
 
@@ -56,24 +57,45 @@ public class EditarActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
     }
 
+    public void funcionarioPuxar(){
+        databaseReference.child("projetotst").child("funcionario")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        editTextProfissao.setText((dataSnapshot.child("profissao").getValue().toString()));
+                        editTextCidade.setText((dataSnapshot.child("cidade").getValue().toString()));
+                        editTextEndereco.setText((dataSnapshot.child("endereco").getValue().toString()));
+                        editTextTelefone.setText((dataSnapshot.child("telefone").getValue().toString()));
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+    }
+
     public void salvar(){
 
         funcionario.setProfissao(editTextProfissao.getText().toString());
         funcionario.setCidade(editTextCidade.getText().toString());
         funcionario.setTelefone(editTextTelefone.getText().toString());
         funcionario.setEndereco(editTextEndereco.getText().toString());
-        databaseReference.child("projetotst").child("funcionario")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("profissao")
-                .setValue(funcionario.getProfissao());
-        databaseReference.child("projetotst").child("funcionario")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cidade")
-                .setValue(funcionario.getCidade());
-        databaseReference.child("projetotst").child("funcionario")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("telefone")
-                .setValue(funcionario.getTelefone());
-        databaseReference.child("projetotst").child("funcionario")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("endereco")
-                .setValue(funcionario.getEndereco());
+
+            databaseReference.child("projetotst").child("funcionario")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("telefone")
+                    .setValue(funcionario.getTelefone());
+            databaseReference.child("projetotst").child("funcionario")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("profissao")
+                    .setValue(funcionario.getProfissao());
+            databaseReference.child("projetotst").child("funcionario")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cidade")
+                    .setValue(funcionario.getCidade());
+            databaseReference.child("projetotst").child("funcionario")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("endereco")
+                    .setValue(funcionario.getEndereco());
+
 
 
     }
