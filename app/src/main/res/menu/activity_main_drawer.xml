@@ -17,18 +17,6 @@
             android:icon="@drawable/rules"
             android:title="@string/menu_slideshow" />
         <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/history"
-            android:title="@string/menu_tools" />
-        <item
-            android:id="@+id/nav_epi"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/menu_epi" />
-        <item
-            android:id="@+id/nav_share"
-            android:icon="@drawable/hourglass"
-            android:title="@string/menu_share" />
-        <item
             android:id="@+id/nav_sair"
             android:icon="@drawable/user"
             android:title="@string/menu_epi" />

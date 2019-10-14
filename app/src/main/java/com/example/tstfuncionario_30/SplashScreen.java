@@ -63,7 +63,6 @@ public class SplashScreen extends AppCompatActivity {
     public void main(){
         Intent intent = new Intent(SplashScreen.this, MainActivity.class);
         startActivity(intent);
-
         finish();
 
     }
@@ -71,7 +70,6 @@ public class SplashScreen extends AppCompatActivity {
     private void criarLogin(){
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build(),
-                new AuthUI.IdpConfig.PhoneBuilder().build(),
                 new AuthUI.IdpConfig.GoogleBuilder().build()
         );
 
@@ -101,7 +99,7 @@ public class SplashScreen extends AppCompatActivity {
                     this.funcionario.setEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
                     this.funcionario.setNome(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
                     this.funcionario.setValido("false");
-                    this.funcionario.setPontos("");
+                    this.funcionario.setPontos("0");
                     this.funcionario.setImgScr("");
                     this.funcionario.setEndereco("");
                     this.funcionario.setCidade("");
@@ -118,6 +116,7 @@ public class SplashScreen extends AppCompatActivity {
                 editor.putString("LOGIN", "true");
                 editor.putString("id",FirebaseAuth.getInstance().getCurrentUser().getUid());
                 editor.apply();
+                main();
 
 
             }
