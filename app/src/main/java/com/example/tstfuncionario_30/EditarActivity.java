@@ -62,6 +62,18 @@ public class EditarActivity extends AppCompatActivity {
         funcionario.setCidade(editTextCidade.getText().toString());
         funcionario.setTelefone(editTextTelefone.getText().toString());
         funcionario.setEndereco(editTextEndereco.getText().toString());
+        databaseReference.child("projetotst").child("funcionario")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("profissao")
+                .setValue(funcionario.getProfissao());
+        databaseReference.child("projetotst").child("funcionario")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("cidade")
+                .setValue(funcionario.getCidade());
+        databaseReference.child("projetotst").child("funcionario")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("telefone")
+                .setValue(funcionario.getTelefone());
+        databaseReference.child("projetotst").child("funcionario")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("endereco")
+                .setValue(funcionario.getEndereco());
 
 
     }

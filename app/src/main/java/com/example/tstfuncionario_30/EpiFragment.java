@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tstfuncionario_30.ui.home.HomeViewModel;
@@ -23,6 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 
 /**
@@ -37,6 +39,7 @@ public class EpiFragment extends Fragment {
     private HomeViewModel homeViewModel;
     private String nome,email,profissao;
     private Button botao;
+    private ImageView imageView;
 
 
 
@@ -59,6 +62,7 @@ public class EpiFragment extends Fragment {
         textViewNome = root.findViewById(R.id.text_view_nome_main);
         textViewEmail = root.findViewById(R.id.text_view_email_main);
         textViewProfissao= root.findViewById(R.id.text_view_profissao_funcionario);
+        imageView = root.findViewById(R.id.img_funcionario);
 
         evento();
         FloatingActionButton fab = root.findViewById(R.id.fab_sair);
@@ -93,6 +97,10 @@ public class EpiFragment extends Fragment {
                         textViewEmail.setText(email);
                         profissao= (dataSnapshot.child("profissao").getValue().toString());
                         textViewProfissao.setText(profissao);
+                        
+                        Picasso.get().load(dataSnapshot.child("imgScr")
+                                .getValue().toString())
+                                .resize(120, 120).centerCrop().into(imageView);
                     }
 
                     @Override

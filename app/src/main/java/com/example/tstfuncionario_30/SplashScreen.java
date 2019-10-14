@@ -100,7 +100,7 @@ public class SplashScreen extends AppCompatActivity {
                     this.funcionario.setNome(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
                     this.funcionario.setValido("false");
                     this.funcionario.setPontos("0");
-                    this.funcionario.setImgScr("");
+                    this.funcionario.setImgScr("https://image.flaticon.com/icons/png/512/38/38002.png");
                     this.funcionario.setEndereco("");
                     this.funcionario.setCidade("");
                     this.funcionario.setTelefone("");
