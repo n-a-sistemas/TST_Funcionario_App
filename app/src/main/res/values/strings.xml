@@ -37,6 +37,45 @@
     <string name="insira_telefone">Insira seu telefone</string>
     <string name="insira_cidade">Insira sua cidade</string>
 
+
+    <string name="regras">"
+                             REGRAS DO JOGO
+
+     *Cada funcionário iniciará a temporada com 1000 pontos
+
+     *Ao longo da temporada, essa pontuação poderá ser alterada dependendo das boas e/ou más atuações do funcionário dentro da empresa.
+
+     *Caso o funcionário contribua na segurança da empresa, o mesmo poderá receber bonificações sendo somada a pontuação total, caso contrário o funcionário perderá uma quantidade de pontos dependendo de cada infração cometida.
+
+     *O jogo terá dois tipos de premiações. A semestral, que será uma premiação coletiva caso a empresa consiga ficar 6 meses sem acidentes.
+
+     *A premiação será uma comemoração com um churrascão. Caso ocorra algum acidente, a comemoração da temporada será cancelada, voltando a valer somente no próximo semestre.
+
+     *A segunda premiação será trimestral, onde os três primeiros do ranking receberão uma premiação individual.
+
+     *Para o primeiro colocado, receberá uma bonificação de R$1000,00.
+
+     *Para o segundo colocado, receberá uma bonificação de R$500,00.
+
+     *Para o terceiro colocado, receberá uma bonificação de R$250,00.
+
+     *As bonificações serão acrescentadas no salário do mês seguinte ao término da temporada.
+
+     *Ao relatar problemas técnicos na empresa, o funcionário receberá 20 pontos;
+
+     *Ao trocar os EPIs antes da data de vencimento o funcionário receberá 15 pontos;
+
+     *Se o funcionário não estiver equipado corretamente com todos os seus EPIs, o mesmo perderá 30 pontos;
+
+     *Ao chegar atrasado sem justificativa, o funcionário perderá 15 pontos;
+
+     *Caso o funcionário cause conflitos dentro da empresa perderá 40 pontos;
+
+     *Ao final de cada dia, todos os funcionários receberão 50 pontos."
+
+        
+    </string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
