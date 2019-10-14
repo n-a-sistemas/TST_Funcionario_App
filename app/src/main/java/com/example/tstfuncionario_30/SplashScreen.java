@@ -77,6 +77,7 @@ public class SplashScreen extends AppCompatActivity {
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
                         .setAvailableProviders(providers)
+                        .setLogo(R.drawable.tst)
                         .build(),
                 123
         );
