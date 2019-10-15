@@ -106,10 +106,9 @@ public class GalleryFragment extends Fragment {
                 epis.clear();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     epii = snapshot.getValue(Epi.class);
-
                     epis.add(epii);
                 }
-
+                lista.invalidateViews();
 
                 arrayAdapterEpi = new Adapter(getActivity(),
                         (ArrayList<Epi>) epis);
